@@ -1,0 +1,50 @@
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+deploy = ["cookiecutter>=2.1.1"]
+
+[tool.pdm.scripts]
+create_instance = "pdm run mkwsgiinstance -s skel -d instance1"
+create_relstorage_instance = "pdm run mkwsgiinstance -s skelrs -d instance1"
+start_instance = "runwsgi instance1/etc/zope.ini"
+
+
+[project]
+name = "{{{project_name}}}"
+version = "{{{plone_version}}}"
+description = ""
+authors = [{ name = "MrTango", email = "md@derico.de" }]
+dependencies = [
+    "Products.CMFPlone>={{{plone_version}}}",
+    "plone.classicui",
+    "plone.app.caching",
+    "plone.app.iterate",
+    "plone.app.upgrade",
+    "Products.CMFPlacefulWorkflow",
+    "horse-with-no-namespace",
+    ### only needed when using relstorage
+    "relstorage",
+    "psycopg2",
+    ###
+    "pyruvate",
+    "collective.easyform",
+    "plone.gallery",
+    "collective.collectionfilter",
+]
+requires-python = ">=3.12"
+license = { text = "GPL" }
+
+[project.optional-dependencies]
+test = [
+    "horse-with-no-namespace",
+    "plone.app.testing",
+    "plone.restapi[test]",
+    "pytest",
+    "pytest-cov",
+    "pytest-plone>=0.5.0",
+]
+
+[tool.uv]
+#managed = true
+constraint-dependencies = [
+    "Products.CMFPlone==6.1.1",
+]

@@ -1,0 +1,9 @@
+# questions
+project_name:
+    type: str
+    help: What is your project name?
+
+plone_version:
+    type: str
+    help: Which Plone version you want to install?
+    default: "6.1.1"
