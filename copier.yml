@@ -7,3 +7,8 @@ plone_version:
     type: str
     help: Which Plone version you want to install?
     default: "6.1.1"
+
+initial_zope_username:
+    type: str
+    help: Initial Zope username
+    default: "admin"
