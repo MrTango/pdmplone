@@ -3,8 +3,8 @@
 deploy = ["cookiecutter>=2.1.1"]
 
 [tool.pdm.scripts]
-create_instance = "uvx pdm run cookiecutter -f --no-input --config-file instance.yaml gh:plone/cookiecutter-zope-instance"
-start_instance = "uvx runwsgi instance/etc/zope.ini"
+create_instance = "pdm run cookiecutter -f --no-input --config-file instance.yaml gh:plone/cookiecutter-zope-instance"
+start_instance = "pdm runwsgi instance/etc/zope.ini"
 
 [project]
 name = "{{project_name}}"
@@ -12,6 +12,7 @@ version = "{{plone_version}}"
 description = ""
 authors = [{ name = "MrTango", email = "md@derico.de" }]
 dependencies = [
+    "pdm",
     "Products.CMFPlone>={{plone_version}}",
     "plone.classicui",
     "plone.app.caching",
