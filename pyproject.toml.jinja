@@ -4,7 +4,7 @@ deploy = ["cookiecutter>=2.1.1"]
 
 [tool.pdm.scripts]
 create_instance = "pdm run cookiecutter -f --no-input --config-file instance.yaml gh:plone/cookiecutter-zope-instance"
-start_instance = "pdm runwsgi instance/etc/zope.ini"
+start_instance = "pdm run runwsgi instance/etc/zope.ini"
 
 [project]
 name = "{{project_name}}"
