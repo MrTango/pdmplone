@@ -1,14 +1,50 @@
+_subdirectory: template
+
 # questions
 project_name:
-    type: str
-    help: What is your project name?
+  type: str
+  help: What is your project name?
 
 plone_version:
-    type: str
-    help: Which Plone version you want to install?
-    default: "6.1.1"
+  type: str
+  help: Which Plone version you want to install?
+  default: "6.1.1"
 
 initial_zope_username:
-    type: str
-    help: Initial Zope username
-    default: "admin"
+  type: str
+  help: Initial Zope username
+  default: "admin"
+
+initial_user_password:
+  type: str
+  help: Initial Zope password leave empty to generate one
+  default: ""
+  secret: true
+
+wsgi_listen:
+  type: str
+  help: WSGI address to listen on
+  default: "localhost:8080"
+
+wsgi_threads:
+  type: int
+  help: WSGI Workers
+  default: 2
+
+db_storage:
+  type: str
+  help: Which storage type to be configured (direct=standalone)
+  choices:
+    - "direct"
+    - "zeo"
+    - "relstorage"
+  default: "direct"
+
+_message_after_copy: |
+  Your project "{{ project_name }}" has been created successfully!
+
+  Next steps:
+
+  1. Change directory to the project root:
+
+      $ cd {{ _copier_conf.dst_path }}
