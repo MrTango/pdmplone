@@ -1,0 +1,22 @@
+%define INSTANCE {{ _copier_conf.dst_path | realpath }}/zeo_server
+
+<zeo>
+  address {{zeo_address}}
+  read-only false
+  invalidation-queue-size 100
+  pid-filename {{ _copier_conf.dst_path | realpath }}/zeo_server/var/zeoserver.pid
+</zeo>
+
+<filestorage 1>
+  path {{ _copier_conf.dst_path | realpath }}/zeo_server/var/Data.fs
+  blob-dir {{ _copier_conf.dst_path | realpath }}/zeo_server/var/blobstorage
+  pack-keep-old true
+</filestorage>
+
+<eventlog>
+  level info
+  <logfile>
+      path {{ _copier_conf.dst_path | realpath }}/zeo_server/var/log/zeo.log
+      format %(asctime)s %(message)s
+    </logfile>
+</eventlog>

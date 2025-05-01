@@ -1,0 +1,67 @@
+%define INSTANCEHOME {{ _copier_conf.dst_path | realpath }}/instance
+instancehome $INSTANCEHOME
+
+%define CLIENTHOME {{ _copier_conf.dst_path | realpath }}/instance/var
+clienthome $CLIENTHOME
+
+debug-mode off
+debug-exceptions off
+security-policy-implementation C
+verbose-security off
+default-zpublisher-encoding utf-8
+
+<environment>
+    CHAMELEON_CACHE {{ _copier_conf.dst_path | realpath }}/instance/var/cache
+    zope_i18n_compile_mo_files true
+</environment>
+<dos_protection>
+    form-memory-limit 1MB
+    form-disk-limit 1GB
+    form-memfile-limit 4KB
+</dos_protection>
+
+# Database
+<zodb_db main>
+    mount-point /
+    cache-size 30000
+    {% if db_storage == "direct" %}
+    <filestorage>
+        path {{ _copier_conf.dst_path | realpath }}/instance/var/filestorage/Data.fs
+        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobs
+        pack-keep-old true
+    </filestorage>
+    {% endif %}
+
+    {% if db_storage == "zeo" %}
+    <zeoclient>
+        # blobs
+        shared-blob-dir {{zeoclient_shared_blob_dir}}
+        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobs
+        # general settings
+        server {{ zeo_server_address }}
+        name zeostorage
+        cache-size 128MB
+    blob-cache-size 6312427520
+        # Advanced options
+    </zeoclient>
+    {% endif %}
+
+    {% if db_storage == "relstorage" %}
+    %import relstorage
+    <relstorage>
+        # blob settings
+        shared-blob-dir false
+        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobs
+        # relstorage general settings
+        keep-history true
+        read-only false
+        create-schema true
+        blob-cache-size 6312427520
+        # driver specific settings
+        <postgresql>
+            driver psycopg2
+            dsn
+        </postgresql>
+    </relstorage>
+    {% endif %}
+</zodb_db>

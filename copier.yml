@@ -21,6 +21,15 @@ initial_user_password:
   default: ""
   secret: true
 
+db_storage:
+  type: str
+  help: Which storage type to be configured (direct=standalone)
+  choices:
+    - "direct"
+    - "zeo"
+    - "relstorage"
+  default: "direct"
+
 wsgi_listen:
   type: str
   help: WSGI address to listen on
@@ -31,14 +40,23 @@ wsgi_threads:
   help: WSGI Workers
   default: 2
 
-db_storage:
+zeo_server_address:
   type: str
-  help: Which storage type to be configured (direct=standalone)
-  choices:
-    - "direct"
-    - "zeo"
-    - "relstorage"
-  default: "direct"
+  help: ZEO Sever address to listen on
+  default: "localhost:8000"
+  when: "{{ db_storage == 'zeo' }}"
+
+zeoclient_shared_blob_dir:
+  type: bool
+  help: ZEO client shared blob dir?
+  default: false
+
+zeoclient_blob_cache_size:
+  type: int
+  help: ZEO client blob cache size in Bytes
+  default: 6312427520
+
+
 
 _message_after_copy: |
   Your project "{{ project_name }}" has been created successfully!
@@ -48,3 +66,19 @@ _message_after_copy: |
   1. Change directory to the project root:
 
       $ cd {{ _copier_conf.dst_path }}
+
+  2. Install
+
+      $ uvx pdm install
+
+  3. Create Zope instance
+
+      $ uvx pdm run create_instance
+
+  4. Start Zope instance
+
+      $ uvx pdm run start_instance
+
+  5. Open browser at http://localhost:8080
+
+  6. Check README.md for more details
