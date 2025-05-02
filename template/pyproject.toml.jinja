@@ -5,7 +5,7 @@ deploy = ["cookiecutter>=2.1.1"]
 [tool.pdm.scripts]
 start_instance = "pdm run runwsgi instance/etc/zope.ini"
 {% if db_storage == 'zeo' %}
-start_zeozerver = "pdm run runzeo -C zeo_server/etc/zeo.conf"
+start_zeoserver = "pdm run runzeo -C zeo_server/etc/zeo.conf"
 {% endif %}
 
 [build-system]
@@ -20,6 +20,7 @@ authors = [{ name = "MrTango", email = "md@derico.de" }]
 dependencies = [
     "pdm",
     "pyruvate",
+    "ZEO",
     "Paste",
     "Products.CMFPlone>={{plone_version}}",
     "plone.classicui",
