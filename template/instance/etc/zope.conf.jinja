@@ -1,7 +1,7 @@
-%define INSTANCEHOME {{ _copier_conf.dst_path | realpath }}/instance
-instancehome $INSTANCEHOME
+%define INSTANCE {{ _copier_conf.dst_path | realpath }}/instance
+instancehome $INSTANCE
 
-%define CLIENTHOME {{ _copier_conf.dst_path | realpath }}/instance/var
+%define CLIENTHOME $INSTANCE/var
 clienthome $CLIENTHOME
 
 debug-mode off
@@ -11,7 +11,7 @@ verbose-security off
 default-zpublisher-encoding utf-8
 
 <environment>
-    CHAMELEON_CACHE {{ _copier_conf.dst_path | realpath }}/instance/var/cache
+    CHAMELEON_CACHE $INSTANCE/var/cache
     zope_i18n_compile_mo_files true
 </environment>
 <dos_protection>
@@ -26,8 +26,8 @@ default-zpublisher-encoding utf-8
     cache-size 30000
     {% if db_storage == "direct" %}
     <filestorage>
-        path {{ _copier_conf.dst_path | realpath }}/instance/var/filestorage/Data.fs
-        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobstorage
+        path $INSTANCE/var/filestorage/Data.fs
+        blob-dir $INSTANCE/var/blobstorage
         pack-keep-old true
     </filestorage>
     {% endif %}
@@ -36,7 +36,7 @@ default-zpublisher-encoding utf-8
     <zeoclient>
         # blobs
         shared-blob-dir {{zeoclient_shared_blob_dir}}
-        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobstorage
+        blob-dir $INSTANCE/var/blobstorage
         # general settings
         server {{ zeo_server_address }}
         name zeostorage
@@ -51,7 +51,7 @@ default-zpublisher-encoding utf-8
     <relstorage>
         # blob settings
         shared-blob-dir false
-        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobstorage
+        blob-dir $INSTANCE/var/blobstorage
         # relstorage general settings
         keep-history true
         read-only false
