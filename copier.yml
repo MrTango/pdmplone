@@ -84,6 +84,8 @@ _message_after_copy: |
 
   5. Check README.md for more details
 
+_message_after_update: |
+    Your project was updated, please run "git status" and resolve existing conflicts!
 
 _tasks:
   - command: "git init"
@@ -92,5 +94,5 @@ _tasks:
     when: "{{ _copier_operation == 'copy' }}"
   - command: "git commit -m 'Copier template generated'"
     when: "{{ _copier_operation == 'copy' }}"
-  - command: "git status"
-    when: "{{ _copier_operation == 'update' }}"
+  # - command: "git status"
+  #   when: "{{ _copier_operation == 'update' }}"
