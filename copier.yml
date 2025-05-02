@@ -83,3 +83,8 @@ _message_after_copy: |
   4. Open browser at http://localhost:8080
 
   5. Check README.md for more details
+
+
+_tasks:
+  - command: ["git", "status"]
+    when: "{{ _copier_operation == 'update' }}"
