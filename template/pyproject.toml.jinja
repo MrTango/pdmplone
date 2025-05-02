@@ -8,6 +8,10 @@ start_instance = "pdm run runwsgi instance/etc/zope.ini"
 start_zeozerver = "pdm run runzeo -C zeo_server/etc/zeo.conf"
 {% endif %}
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "{{project_name}}"
 version = "{{plone_version}}"
