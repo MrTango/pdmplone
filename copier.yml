@@ -1,5 +1,9 @@
 _subdirectory: template
 
+_exclude:
+    - "{% if _copier_operation == 'update' -%}instance/inituser{% endif %}"
+
+
 # questions
 project_name:
   type: str
@@ -17,8 +21,8 @@ initial_zope_username:
 
 initial_user_password:
   type: str
-  help: Initial Zope password leave empty to generate one
-  default: ""
+  help: Initial Zope password
+  default: "admin"
   secret: true
 
 db_storage:
