@@ -35,7 +35,7 @@ wsgi_listen:
   help: WSGI address to listen on
   default: "localhost:8080"
 
-wsgi_threads:
+wsgi_workers:
   type: int
   help: WSGI Workers
   default: 2
@@ -72,14 +72,10 @@ _message_after_copy: |
 
       $ uvx pdm install
 
-  3. Create Zope instance
-
-      $ uvx pdm run create_instance
-
-  4. Start Zope instance
+  3. Start Zope instance
 
       $ uvx pdm run start_instance
 
-  5. Open browser at http://localhost:8080
+  4. Open browser at http://localhost:8080
 
-  6. Check README.md for more details
+  5. Check README.md for more details
