@@ -27,7 +27,7 @@ default-zpublisher-encoding utf-8
     {% if db_storage == "direct" %}
     <filestorage>
         path {{ _copier_conf.dst_path | realpath }}/instance/var/filestorage/Data.fs
-        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobs
+        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobstorage
         pack-keep-old true
     </filestorage>
     {% endif %}
@@ -36,7 +36,7 @@ default-zpublisher-encoding utf-8
     <zeoclient>
         # blobs
         shared-blob-dir {{zeoclient_shared_blob_dir}}
-        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobs
+        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobstorage
         # general settings
         server {{ zeo_server_address }}
         name zeostorage
@@ -51,7 +51,7 @@ default-zpublisher-encoding utf-8
     <relstorage>
         # blob settings
         shared-blob-dir false
-        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobs
+        blob-dir {{ _copier_conf.dst_path | realpath }}/instance/var/blobstorage
         # relstorage general settings
         keep-history true
         read-only false
