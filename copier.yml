@@ -3,7 +3,7 @@ _subdirectory: template
 # questions
 project_name:
   type: str
-  help: What is your project name?
+  help: What is your Python project name?
 
 plone_version:
   type: str
@@ -42,7 +42,7 @@ wsgi_threads:
 
 zeo_server_address:
   type: str
-  help: ZEO Sever address to listen on
+  help: ZEO Server address to listen on
   default: "localhost:8000"
   when: "{{ db_storage == 'zeo' }}"
 
@@ -50,16 +50,17 @@ zeoclient_shared_blob_dir:
   type: bool
   help: ZEO client shared blob dir?
   default: false
+  when: "{{ db_storage == 'zeo' }}"
 
 zeoclient_blob_cache_size:
   type: int
   help: ZEO client blob cache size in Bytes
   default: 6312427520
-
+  when: "{{ db_storage == 'zeo' }}"
 
 
 _message_after_copy: |
-  Your project "{{ project_name }}" has been created successfully!
+  Your project "{{ project_name }}" has been created here: {{ _copier_conf.dst_path | realpath }}
 
   Next steps:
 
