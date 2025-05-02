@@ -21,7 +21,7 @@ initial_zope_username:
 
 initial_user_password:
   type: str
-  help: Initial Zope password
+  help: Initial Zope password (default is admin)
   default: "admin"
   secret: true
 
