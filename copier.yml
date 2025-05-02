@@ -86,5 +86,9 @@ _message_after_copy: |
 
 
 _tasks:
+  - command: ["git", "init"]
+    when: "{{ _copier_operation == 'copy' }}"
+  - command: ["git", "add", "."]
+    when: "{{ _copier_operation == 'copy' }}"
   - command: ["git", "status"]
     when: "{{ _copier_operation == 'update' }}"
