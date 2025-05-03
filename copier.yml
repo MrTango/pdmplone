@@ -62,6 +62,33 @@ zeoclient_blob_cache_size:
   default: 6312427520
   when: "{{ db_storage == 'zeo' }}"
 
+dbname:
+  type: str
+  help: Database Name
+  when: "{{ db_storage == 'relstorage' }}"
+
+dbhost:
+  type: str
+  help: Database Host
+  default: localhost
+  when: "{{ db_storage == 'relstorage' }}"
+
+dbhost:
+  type: str
+  help: Database Port
+  default: 5432
+  when: "{{ db_storage == 'relstorage' }}"
+
+dbuser:
+  type: str
+  help: Database User
+  when: "{{ db_storage == 'relstorage' }}"
+
+dbpassword:
+  type: str
+  help: Database Password
+  when: "{{ db_storage == 'relstorage' }}"
+
 
 _message_after_copy: |
   Your project "{{ project_name }}" has been created here: {{ _copier_conf.dst_path | realpath }}

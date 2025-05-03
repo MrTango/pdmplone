@@ -60,7 +60,7 @@ default-zpublisher-encoding utf-8
         # driver specific settings
         <postgresql>
             driver psycopg2
-            dsn
+            dsn dbname='{{dbname}}' host='{{dbhost}}' port='{{dbport}}'  user='{{dbuser}}' password='{{dbpassword}}'
         </postgresql>
     </relstorage>
     {% endif %}
