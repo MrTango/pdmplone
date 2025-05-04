@@ -3,6 +3,10 @@ _subdirectory: template
 _exclude:
     - "{% if _copier_operation == 'update' -%}instance/inituser{% endif %}"
 
+dst_path:
+  type: str
+  default: "{% if dst_path is defined %}{{ dst_path }}{% else %}{{ _copier_conf.dst_path }}{% endif %}"
+  when: false
 
 # questions
 project_name:
@@ -87,6 +91,8 @@ dbuser:
 dbpassword:
   type: str
   help: Database Password
+  default: ""
+  secret: true
   when: "{{ db_storage == 'relstorage' }}"
 
 

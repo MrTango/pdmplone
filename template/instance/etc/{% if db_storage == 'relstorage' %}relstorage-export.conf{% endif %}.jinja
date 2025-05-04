@@ -8,7 +8,7 @@
 <relstorage source>
     # blob settings
     shared-blob-dir false
-    blob-dir /home/maik/develop/tmp/test/bdk.de/instance/var/blobs
+    blob-dir {{ dst_path | realpath }}/instance/var/blobstorage
     # relstorage general settings
     keep-history true
     read-only false
@@ -17,13 +17,13 @@
     # driver specific settings
     <postgresql>
         driver psycopg2
-        dsn 
+        dsn dbname='{{dbname}}' host='{{dbhost}}' port='{{dbport}}'  user='{{dbuser}}' password='{{dbpassword}}'
     </postgresql>
 </relstorage>
 
 <filestorage destination>
-    path /home/maik/develop/tmp/test/bdk.de
-    blob-dir  /home/maik/develop/tmp/test/bdk.de
+    path {{ dst_path | realpath }}/instance/var/filestorage
+    blob-dir  {{ dst_path | realpath }}/instance/var/blobstorage
 </filestorage>
 
 
