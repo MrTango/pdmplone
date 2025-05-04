@@ -13,15 +13,24 @@ uvx pdm install
 ## Create Zope instance
 
 ```sh
-uvx pdm run create_instance
+uvx pdm create_instance
 ```
 
+{% if db_storage == "zeo" %}
+## Start ZEO server
+
+```sh
+uvx pdm start_zeoserver
+```
+{% endif %}
 
 ## Start Zope instance
 
 ```sh
-uvx pdm run start_instance
+uvx pdm start_instance
 ```
+
+
 
 ## open the browser
 
