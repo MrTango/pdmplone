@@ -7,7 +7,7 @@
 - is able to update existing projects when the template changes
 
 More about using [PDM](https://pdm-project.org/en/latest/) to manage packages.
-More info about [Copier templates](https://copier.readthedocs.io/en/stable/) to generate projects from templates.
+More info about [Copier](https://copier.readthedocs.io/en/stable/) to generate projects from templates.
 
 
 ## Usage
