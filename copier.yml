@@ -5,7 +5,7 @@ _exclude:
 
 dst_path:
   type: str
-  default: "{% if dst_path is defined %}{{ dst_path }}{% else %}{{ _copier_conf.dst_path }}{% endif %}"
+  default: "{{ dst_path | default(_copier_conf.dst_path) }}"
   when: false
 
 # questions
