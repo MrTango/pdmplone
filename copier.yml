@@ -11,7 +11,7 @@ dst_path:
 # questions
 project_name:
   type: str
-  default:
+  default: ""
   help: What is your Python project name?
 
 plone_version:
