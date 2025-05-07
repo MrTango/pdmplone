@@ -135,5 +135,6 @@ _tasks:
     when: "{{ _copier_operation == 'copy' }}"
   - command: "git commit -m 'Copier template generated'"
     when: "{{ _copier_operation == 'copy' }}"
-  # - command: "git status"
-  #   when: "{{ _copier_operation == 'update' }}"
+  - command: "git status"
+    working_directory: "{{ dst_path | realpath }}"
+    when: "{{ _copier_operation == 'update' }}"
