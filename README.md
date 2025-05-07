@@ -44,3 +44,20 @@ On Linux:
 mkdir ~/.config/copier
 touch ~/.config/copier/settings.yml
 ```
+
+## Example Copier settings file
+
+Note: for the default to work, the question has to have a default paramter set!
+
+```yml
+defaults:
+  user_name: "MrTango"
+  user_email: md@derico.de
+  github_user: "MrTango"
+  gitlab_user: "MrTango78"
+  mastodon_handle: "https://mastodon.social/@mrtango"
+  dbuser: "plonerel"
+trust:
+  - https://github.com/MrTango/
+  - gh:MrTango/
+```
