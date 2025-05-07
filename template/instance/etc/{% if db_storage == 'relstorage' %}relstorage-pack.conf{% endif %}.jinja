@@ -7,7 +7,7 @@
 <relstorage>
     # blob settings
     shared-blob-dir false
-    blob-dir /home/maik/develop/tmp/test/bdk.de/instance/var/blobs
+    blob-dir {{ dst_path | realpath }}/instance/var/blobs
     # relstorage general settings
     keep-history true
     read-only false

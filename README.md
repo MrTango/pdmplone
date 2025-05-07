@@ -15,7 +15,7 @@ More info about [Copier](https://copier.readthedocs.io/en/stable/) to generate p
 ## Create project
 
 ```sh
-uvx copier copy gh:mrtango/pdmplone my-project.de
+uvx copier copy gh:mrtango/pdmplone my-project.de --trust
 cd my-project.de
 uvx pdm install
 ```

@@ -11,6 +11,7 @@ dst_path:
 # questions
 project_name:
   type: str
+  default:
   help: What is your Python project name?
 
 plone_version:
@@ -97,25 +98,32 @@ dbpassword:
 
 
 _message_after_copy: |
-  Your project "{{ project_name }}" has been created here: {{ _copier_conf.dst_path | realpath }}
+  Your project "{{ project_name }}" has been created here: {{ dst_path | realpath }}
 
   Next steps:
 
-  1. Change directory to the project root:
+  - Change directory to the project root:
 
       $ cd {{ _copier_conf.dst_path }}
 
-  2. Install
+  - Install
 
       $ uvx pdm install
 
-  3. Start Zope instance
+  {% if db_storage == "zeo" %}
+  - Start ZEO server
 
-      $ uvx pdm run start_instance
+      $ uvx pdm start_zeoserver
 
-  4. Open browser at http://localhost:8080
+  {% endif %}
 
-  5. Check README.md for more details
+  - Start Zope instance
+
+      $ uvx pdm start_instance
+
+  - Open browser at http://localhost:8080
+
+  - Check README.md for more details
 
 _message_after_update: |
     Your project was updated, please run "git status" and resolve existing conflicts!
