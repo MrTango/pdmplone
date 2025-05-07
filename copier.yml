@@ -8,6 +8,11 @@ dst_path:
   default: "{{ dst_path | default(_copier_conf.dst_path) }}"
   when: false
 
+dst_realpath:
+  type: str
+  default: "{{ dst_realpath | default(_copier_conf.dst_path | realpath) }}"
+  when: false
+
 # questions
 project_name:
   type: str
@@ -135,7 +140,7 @@ _tasks:
     when: "{{ _copier_operation == 'copy' }}"
   - command: "git commit -m 'Copier template generated'"
     when: "{{ _copier_operation == 'copy' }}"
-  - command: "echo {{ dst_path | realpath }}"
+  - command: "echo {{ dst_realpath }}"
     # working_directgit coory: "{{ dst_path | realpath }}"
     when: "{{ _copier_operation == 'update' }}"
   # - command: "git status"
